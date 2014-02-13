@@ -22,3 +22,13 @@ create table user_group (
     group_name varchar(50) not null,
     is_deleted integer not null DEFAULT '0'
 ) engine = innodb;
+
+
+--changeset aMasset:3
+
+create table movie (
+    id integer not null primary key auto_increment,
+    title varchar(150) not null,
+    web_link varchar(150),
+    is_deleted integer not null DEFAULT '0'
+) engine = innodb;

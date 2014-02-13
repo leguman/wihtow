@@ -1,3 +1,6 @@
 /wihtow-ejb/target/
 /wihtow-web/target/
 /wihtow-ear/target/
+/wihtow-ear/nb-configuration.xml
+/wihtow-ejb/nb-configuration.xml
+/wihtow-web/nb-configuration.xml

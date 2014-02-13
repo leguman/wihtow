@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="#{request.contextPath}/resources/css/cssLayout.css" rel="stylesheet" type="text/css"/>
+        <link href="#{request.contextPath}/resources/css/bootstrap.css" rel="stylesheet" type="text/css" media="screen" />
+        <link href="#{request.contextPath}/resources/css/bootstrap-theme.css" rel="stylesheet" type="text/css" media="screen" />
+        <title><ui:insert name="title">WihtoW</ui:insert></title>
+    </h:head>
+
+    <h:body>
+        <nav id="navigation" class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" jsf:outcome="/index">WihtoW</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a jsf:outcome="/index">Nouveau</a></li>
+                    <li><a jsf:outcome="/movie/movies">Liste</a></li>
+                    <li><a jsf:outcome="/index">Rechercher</a></li>
+                    <li><a jsf:outcome="/index">Contact</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a jsf:outcome="/index">Connexion</a></li>
+                    <li><a jsf:outcome="/index">Inscription</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="breadcrumb">
+            <ui:insert name="breadcrumb">breadcrumb</ui:insert>            
+        </div>
+
+        <div id="content">
+            <ui:insert name="content"></ui:insert>            
+        </div>
+
+    </h:body>
+</html>
