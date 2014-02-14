@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author axel
+ * @author X-L
  */
 @Stateless
 public class UserBean extends AbstractBean<User> {

@@ -11,7 +11,7 @@ import javax.faces.bean.RequestScoped;
 
 /**
  *
- * @author axel
+ * @author X-L
  */
 @ManagedBean
 @RequestScoped

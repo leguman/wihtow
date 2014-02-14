@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author axel
+ * @author X-L
  */
 @Entity
 @Table(name = "user_group")

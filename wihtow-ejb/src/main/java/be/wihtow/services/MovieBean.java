@@ -10,7 +10,7 @@ import javax.persistence.TypedQuery;
 
 /**
  *
- * @author axel
+ * @author X-L
  */
 @Stateless
 public class MovieBean extends AbstractBean<Movie> {

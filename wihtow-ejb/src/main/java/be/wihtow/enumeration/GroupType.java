@@ -2,7 +2,7 @@ package be.wihtow.enumeration;
 
 /**
  *
- * @author axel
+ * @author X-L
  */
 public enum GroupType {
 

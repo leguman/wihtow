@@ -6,9 +6,9 @@
 
     <application>
         
-        <message-bundle>be.withow.web.bundle.messages</message-bundle>
+        <message-bundle>be.wihtow.web.bundle.messages</message-bundle>
         <resource-bundle>
-            <base-name>be.withow.web.bundle.resources</base-name>
+            <base-name>be.wihtow.web.bundle.resources</base-name>
             <var>bundle</var>
         </resource-bundle>
         

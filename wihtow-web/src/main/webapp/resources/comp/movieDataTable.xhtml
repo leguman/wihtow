@@ -17,19 +17,19 @@
         <h:dataTable styleClass="table table-hover" value="#{cc.attrs.movieList}" var="movie">
 
             <h:column>
-                <f:facet name="header">ID</f:facet>
+                <f:facet name="header">#{bundle.id}</f:facet>
                 <h:outputText value="#{movie.id}"/>
             </h:column> 
 
             <h:column>
-                <f:facet name="header">Titre</f:facet>
+                <f:facet name="header">#{bundle.title}</f:facet>
                 <a href="#{movie.webLink}"><h:outputText value="#{movie.title}"/></a> 
             </h:column>
 
             <h:column rendered="#{cc.attrs.userGroup eq 'ADMINISTRATOR'}">
-                <f:facet name="header">Edit</f:facet>
+                <f:facet name="header">#{bundle.edit}</f:facet>
                 <h:link outcome="/movie/movie_form">
-                    <span class="glyphicon glyphicon-edit"/> Edit
+                    <span class="glyphicon glyphicon-edit"/> #{bundle.edit}
                     <f:param name="id" value="#{movie.id}"/>
                 </h:link>
             </h:column> 

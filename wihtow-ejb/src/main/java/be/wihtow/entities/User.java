@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 
 /**
  *
- * @author axel
+ * @author X-L
  */
 @Entity
 @Table(name = "user")

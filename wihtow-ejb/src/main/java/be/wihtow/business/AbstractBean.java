@@ -9,7 +9,7 @@ import be.wihtow.domain.Identified;
  * Contains common methods to all EJB.<br />
  * Thanks to Hildeberto Mendonca/fishe project on GitHub
  *
- * @author axel
+ * @author X-L
  * @param <T>
  */
 public abstract class AbstractBean<T extends Identified> {

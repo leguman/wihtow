@@ -4,7 +4,7 @@ package be.wihtow.domain;
  * To be implemented by entity classes.<br />Thanks to Hildeberto Mendonca/fishe
  * project on GitHub
  *
- * @author axel
+ * @author X-L
  * @param <T>
  */
 public interface Identified<T extends Number> {

@@ -10,7 +10,7 @@
         <link href="#{request.contextPath}/resources/css/cssLayout.css" rel="stylesheet" type="text/css"/>
         <link href="#{request.contextPath}/resources/css/bootstrap.css" rel="stylesheet" type="text/css" media="screen" />
         <link href="#{request.contextPath}/resources/css/bootstrap-theme.css" rel="stylesheet" type="text/css" media="screen" />
-        <title><ui:insert name="title">WihtoW</ui:insert></title>
+        <title><ui:insert name="title">#{bundle.wihtow}</ui:insert></title>
     </h:head>
 
     <h:body>
@@ -21,19 +21,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" jsf:outcome="/index">WihtoW</a>
+                <a class="navbar-brand" jsf:outcome="/index">#{bundle.wihtow}</a>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a jsf:outcome="/index">Nouveau</a></li>
-                    <li><a jsf:outcome="/movie/movies">Liste</a></li>
-                    <li><a jsf:outcome="/index">Rechercher</a></li>
-                    <li><a jsf:outcome="/index">Contact</a></li>
+                    <li><a jsf:outcome="/index">#{bundle.new}</a></li>
+                    <li><a jsf:outcome="/movie/movies">#{bundle.list}</a></li>
+                    <li><a jsf:outcome="/index">#{bundle.search}</a></li>
+                    <li><a jsf:outcome="/index">#{bundle.contactUs}</a></li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a jsf:outcome="/index">Connexion</a></li>
-                    <li><a jsf:outcome="/index">Inscription</a>
+                    <li><a jsf:outcome="/index">#{bundle.connection}</a></li>
+                    <li><a jsf:outcome="/index">#{bundle.registration}</a>
                     </li>
                 </ul>
             </div>
