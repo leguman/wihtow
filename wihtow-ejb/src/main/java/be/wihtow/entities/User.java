@@ -1,15 +1,17 @@
 package be.wihtow.entities;
 
 import be.wihtow.domain.Identified;
+import be.wihtow.enumeration.Group;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -37,8 +39,9 @@ public class User implements Serializable, Identified<Integer> {
     private Boolean isActive;
     @Column(name = "is_deleted")
     private Boolean isDeleted;
-    @OneToOne
-    private UserGroup userGroup;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "group_name")
+    private Group group;
 
     @Override
     public Integer getId() {
@@ -98,12 +101,12 @@ public class User implements Serializable, Identified<Integer> {
         this.isDeleted = isDeleted;
     }
 
-    public UserGroup getUserGroup() {
-        return userGroup;
+    public Group getGroup() {
+        return group;
     }
 
-    public void setUserGroup(UserGroup userGroup) {
-        this.userGroup = userGroup;
+    public void setGroup(Group group) {
+        this.group = group;
     }
 
     @Override

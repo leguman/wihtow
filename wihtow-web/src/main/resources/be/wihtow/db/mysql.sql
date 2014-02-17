@@ -32,3 +32,18 @@ create table movie (
     web_link varchar(150),
     is_deleted integer not null DEFAULT '0'
 ) engine = innodb;
+
+
+-- changeset aMasset:4
+
+ALTER DATABASE wihtow CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE movie CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE user CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE user_group CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
+-- changeset aMasset:5
+
+ALTER TABLE user DROP COLUMN id_groupe;
+ALTER TABLE user ADD group_name varchar(30);
+DROP TABLE user_group;

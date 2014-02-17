@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="../template.xhtml">
+
+        <ui:define name="title">#{bundle.listFull} :: #{bundle.wihtow}</ui:define>
+        <ui:define name="breadcrumb"></ui:define>
+
+        <ui:define name="content">
+            <div class="page-header">
+                <h1>#{bundle.user}</h1>
+            </div>
+            <h:form id="form">
+
+                <div class="form-group">
+                    <label for="username">#{bundle.username}</label>
+                    <input type="text" id="username" class="form-control" jsf:value="#{userMBean.user.nickname}"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="pass">#{bundle.password}</label>
+                    <input type="password" id="pass" class="form-control" jsf:value="#{userMBean.user.password}"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">#{bundle.email}</label>
+                    <input id="email" type="email" class="form-control" jsf:value="#{userMBean.user.email}"/>
+                </div>
+
+                <div class="checkbox">
+                    <label>
+                        <input id="isActiveSelect" type="checkbox" jsf:value="#{userMBean.user.isActive}"/> #{bundle.activated} ?
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <h:outputLabel for="group">#{bundle.group}</h:outputLabel>
+                    <h:selectOneMenu id="group" styleClass="form-control" value="#{userMBean.user.group}">
+                        <f:selectItems value="#{userMBean.groups}" var="group" itemValue="#{group}" itemLabel="#{group.toString()}"/>
+                    </h:selectOneMenu>
+                </div>
+
+                <h:inputHidden value="#{userMBean.user.id}"/>
+
+                <h:commandButton class="btn btn-default" value="#{bundle.save}" action="#{userMBean.save}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
+

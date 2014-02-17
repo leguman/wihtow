@@ -4,6 +4,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import be.wihtow.domain.Identified;
+import java.util.List;
+import javax.persistence.criteria.CriteriaQuery;
 
 /**
  * Contains common methods to all EJB.<br />
@@ -57,5 +59,18 @@ public abstract class AbstractBean<T extends Identified> {
 
     public T find(Number id) {
         return getEntityManager().find(entityClass, id);
+    }
+
+    /**
+     * Returns all persisted instances of the given entity. Use it with extreme
+     * precaution.
+     *
+     * @return
+     */
+    public List<T> findAll() {
+        CriteriaQuery cq = getEntityManager().getCriteriaBuilder()
+                .createQuery();
+        cq.select(cq.from(entityClass));
+        return getEntityManager().createQuery(cq).getResultList();
     }
 }

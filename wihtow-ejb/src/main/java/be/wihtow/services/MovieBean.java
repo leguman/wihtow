@@ -32,8 +32,15 @@ public class MovieBean extends AbstractBean<Movie> {
      *
      * @return
      */
+    @Override
     public List<Movie> findAll() {
         TypedQuery<Movie> query = em.createQuery("SELECT m FROM Movie m WHERE m.isDeleted = :false ORDER BY m.id ASC", Movie.class);
+        query.setParameter("false", Boolean.FALSE);
+        return query.getResultList();
+    }
+
+    public List<Movie> findLastest() {
+        TypedQuery<Movie> query = em.createQuery("SELECT m FROM Movie m WHERE m.isDeleted = :false ORDER BY m.id DESC", Movie.class);
         query.setParameter("false", Boolean.FALSE);
         return query.getResultList();
     }

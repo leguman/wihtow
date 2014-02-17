@@ -10,6 +10,7 @@
         <link href="#{request.contextPath}/resources/css/cssLayout.css" rel="stylesheet" type="text/css"/>
         <link href="#{request.contextPath}/resources/css/bootstrap.css" rel="stylesheet" type="text/css" media="screen" />
         <link href="#{request.contextPath}/resources/css/bootstrap-theme.css" rel="stylesheet" type="text/css" media="screen" />
+        <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/image/favicon.ico"/>
         <title><ui:insert name="title">#{bundle.wihtow}</ui:insert></title>
     </h:head>
 
@@ -25,25 +26,25 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a jsf:outcome="/index">#{bundle.new}</a></li>
+                    <li><a jsf:outcome="/movie/latest">#{bundle.new}</a></li>
                     <li><a jsf:outcome="/movie/movies">#{bundle.list}</a></li>
-                    <li><a jsf:outcome="/index">#{bundle.search}</a></li>
+                    <li><a jsf:outcome="/user/users">#{bundle.user}</a></li>
                     <li><a jsf:outcome="/index">#{bundle.contactUs}</a></li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a jsf:outcome="/index">#{bundle.connection}</a></li>
-                    <li><a jsf:outcome="/index">#{bundle.registration}</a>
+                    <li><a jsf:outcome="/index">#{bundle.signIn}</a></li>
+                    <li><a jsf:outcome="/index">#{bundle.signUp}</a>
                     </li>
                 </ul>
             </div>
         </nav>
 
-        <div id="breadcrumb">
+        <div id="breadcrumb" jsf:rendered="#{authMBean.auth}">
             <ui:insert name="breadcrumb">breadcrumb</ui:insert>            
         </div>
 
-        <div id="content">
+        <div id="content" jsf:rendered="#{!authMBean.auth}">
             <ui:insert name="content"></ui:insert>            
         </div>
 

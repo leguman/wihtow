@@ -1,20 +1,19 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:wihtow="http://xmlns.jcp.org/jsf/composite/comp"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <ui:composition template="../template.xhtml">
 
-        <ui:define name="title">#{bundle.listFull} :: #{bundle.wihtow}</ui:define>
+        <ui:define name="title">#{bundle.new} :: #{bundle.wihtow}</ui:define>
         <ui:define name="breadcrumb"></ui:define>
 
         <ui:define name="content">
             <fieldset>
-                <legend>#{bundle.listFull}</legend>
+                <legend>#{bundle.new}</legend>
                 <h:form>
-                    <h:button outcome="/movie/movie_form" value="#{bundle.new}" class="btn btn-default pull-right"/>
-                    <wihtow:movieDataTable movieList="#{movieMBean.movies}" userGroup="ADMINISTRATOR"/>
+                    <wihtow:movieDataTable movieList="#{movieMBean.latestMovies}" userGroup="ADMINISTRATOR"/>
                 </h:form>
             </fieldset>
 

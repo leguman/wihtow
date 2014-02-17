@@ -34,7 +34,12 @@ public class MovieMBean {
     }
 
     public String save() {
-        movieBean.save(this.movie);
+        if (this.movie.getId() != null) {
+            movieBean.save(this.movie);
+        } else {
+            this.movie.setIsDeleted(Boolean.FALSE);
+            movieBean.save(this.movie);
+        }
         return "movies";
     }
 
@@ -52,6 +57,13 @@ public class MovieMBean {
     }
 
     public List<Movie> getMovies() {
+        if (movies == null) {
+            movies = movieBean.findAll();
+        }
+        return movies;
+    }
+
+    public List<Movie> getLatestMovies() {
         if (movies == null) {
             movies = movieBean.findAll();
         }

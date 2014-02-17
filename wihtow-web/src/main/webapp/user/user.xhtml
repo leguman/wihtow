@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="../template.xhtml">
+
+        <ui:define name="title">#{bundle.listFull} :: #{bundle.wihtow}</ui:define>
+        <ui:define name="breadcrumb"></ui:define>
+
+        <ui:define name="content">
+            <div class="page-header">
+                <h1>#{bundle.user}: #{userMBean.user.nickname}</h1>
+            </div>
+            <h:form>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <dl class="dl-horizontal">
+                            <dt>#{bundle.username}</dt>
+                            <dd>#{userMBean.user.nickname}</dd>
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt>#{bundle.signUpDate}</dt>
+                            <dd>
+                                <h:outputText id="signUpDate" value="#{userMBean.user.subscriptionDate}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </dd>
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt>#{bundle.group}</dt>
+                            <dd>
+                                <h:outputText id="group" value="#{userMBean.user.group}"/>
+                            </dd>
+                        </dl>
+
+                        <h:button outcome="user_form" value="#{bundle.edit}" class="btn btn-default pull-right">
+                            <f:param name="id" value="#{userMBean.user.id}"/>
+                        </h:button>
+
+                        <h:commandButton value="#{bundle.delete}" action="#{userMBean.remove}" styleClass="btn btn-default pull-right" style="margin-left: 5px;">
+                            <f:param name="id" value="#{userMBean.user.id}"/>
+                        </h:commandButton>
+                    </div>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
+

@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="../template.xhtml">
+
+        <ui:define name="title">#{bundle.listFull} :: #{bundle.wihtow}</ui:define>
+        <ui:define name="breadcrumb"></ui:define>
+
+        <ui:define name="content">
+            <h:form>
+                <h:button outcome="/user/user_form" value="#{bundle.new}" class="btn btn-default pull-right"/>
+
+                <h:dataTable var="u" value="#{userMBean.users}" class="table table-hover">
+
+                    <h:column>
+                        <f:facet name="header">#{bundle.username}</f:facet>
+                        <h:link outcome="/user/user" value="#{u.nickname}">
+                            <f:param name="id" value="#{u.id}"/>
+                        </h:link>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">#{bundle.role}</f:facet>
+                        <h:outputText value="#{u.group}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">#{bundle.signUpDate}</f:facet>
+                        <h:outputText id="signUpDate" value="#{u.subscriptionDate}">
+                            <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+                        </h:outputText>
+                    </h:column>
+
+                </h:dataTable>
+            </h:form>      
+        </ui:define>
+    </ui:composition>
+</html>
+

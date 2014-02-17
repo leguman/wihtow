@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+    <ui:composition template="template.xhtml">
+
+        <ui:define name="title">#{bundle.signIn} :: #{bundle.wihtow}</ui:define>
+        <ui:define name="breadcrumb"></ui:define>
+
+        <ui:define name="content">
+            <div id="loginForm">
+                <fieldset>
+                    <legend>#{bundle.signIn}</legend>
+                    <form class="form-signin">
+                        <h2><span class="form-signin-heading">#{bundle.signIn}</span></h2>
+                        <input id="pseudo" type="text" class="form-control" jsf:value="#{authMBean.user.nickname}" placeholder="#{bundle.username}"/>
+                        <input id="pass" type="password" class="form-control" jsf:value="#{authMBean.user.password}" placeholder="#{bundle.password}"/>
+
+                        <input type="submit" jsf:action="#{authMBean.authenticate()}"  value="#{bundle.signIn}" class="btn btn-lg btn-primary btn-block"/>
+                    </form>
+                </fieldset>
+            </div>
+        </ui:define>
+
+    </ui:composition>
+
+</html>
+
