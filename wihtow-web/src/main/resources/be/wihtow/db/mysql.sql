@@ -47,3 +47,28 @@ ALTER TABLE user_group CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
 ALTER TABLE user DROP COLUMN id_groupe;
 ALTER TABLE user ADD group_name varchar(30);
 DROP TABLE user_group;
+
+
+-- changeset aMasset:6
+
+create table genre (
+    id integer not null primary key auto_increment,
+    libelle varchar(150) not null,
+    is_deleted integer not null DEFAULT 0,
+    CONSTRAINT chk_genre_deleted CHECK (is_deleted IN (0,1))
+) engine = innodb;
+
+create table movie_genre (
+    id_movie integer not null,
+    id_genre integer not null,
+    INDEX idx_movie (id_movie),
+    INDEX idx_genre (id_genre),
+    CONSTRAINT fk_movie FOREIGN KEY (id_movie) REFERENCES movie(id),
+    CONSTRAINT fk_genre FOREIGN KEY (id_genre) REFERENCES genre(id),
+    CONSTRAINT uc_movie_genre UNIQUE (id_movie,id_genre)
+) engine = innodb;
+
+ALTER TABLE movie ADD CONSTRAINT chk_movie_delete CHECK (is_deleted IN (0,1));
+ALTER TABLE user ADD CONSTRAINT chk_user_delete CHECK (is_deleted IN (0,1));
+ALTER TABLE user ADD CONSTRAINT chk_user_active CHECK (is_active IN (0,1));
+ALTER TABLE genre CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;

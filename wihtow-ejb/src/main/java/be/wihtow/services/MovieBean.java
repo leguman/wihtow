@@ -1,7 +1,7 @@
 package be.wihtow.services;
 
 import be.wihtow.business.AbstractBean;
-import be.wihtow.entities.Movie;
+import be.wihtow.entities.movie.Movie;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -24,7 +24,7 @@ public class MovieBean extends AbstractBean<Movie> {
 
     @Override
     protected EntityManager getEntityManager() {
-        return em;
+        return this.em;
     }
 
     /**
@@ -39,7 +39,7 @@ public class MovieBean extends AbstractBean<Movie> {
         return query.getResultList();
     }
 
-    public List<Movie> findLastest() {
+    public List<Movie> findLatest() {
         TypedQuery<Movie> query = em.createQuery("SELECT m FROM Movie m WHERE m.isDeleted = :false ORDER BY m.id DESC", Movie.class);
         query.setParameter("false", Boolean.FALSE);
         return query.getResultList();

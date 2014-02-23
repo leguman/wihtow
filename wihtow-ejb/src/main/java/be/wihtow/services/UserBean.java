@@ -1,7 +1,7 @@
 package be.wihtow.services;
 
 import be.wihtow.business.AbstractBean;
-import be.wihtow.entities.User;
+import be.wihtow.entities.administration.User;
 import be.wihtow.utils.password.Password;
 import java.util.List;
 import javax.ejb.Stateless;

@@ -1,6 +1,6 @@
 package be.wihtow.web.controller;
 
-import be.wihtow.entities.Movie;
+import be.wihtow.entities.movie.Movie;
 import be.wihtow.services.MovieBean;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -65,7 +65,7 @@ public class MovieMBean {
 
     public List<Movie> getLatestMovies() {
         if (movies == null) {
-            movies = movieBean.findAll();
+            movies = movieBean.findLatest();
         }
         return movies;
     }

@@ -1,6 +1,6 @@
 package be.wihtow.web.controller;
 
-import be.wihtow.entities.User;
+import be.wihtow.entities.administration.User;
 import be.wihtow.enumeration.Group;
 import be.wihtow.services.UserBean;
 import be.wihtow.utils.password.Password;

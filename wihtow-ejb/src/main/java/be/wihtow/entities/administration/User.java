@@ -1,4 +1,4 @@
-package be.wihtow.entities;
+package be.wihtow.entities.administration;
 
 import be.wihtow.domain.Identified;
 import be.wihtow.enumeration.Group;
@@ -42,6 +42,9 @@ public class User implements Serializable, Identified<Integer> {
     @Enumerated(EnumType.STRING)
     @Column(name = "group_name")
     private Group group;
+
+    public User() {
+    }
 
     @Override
     public Integer getId() {
@@ -133,7 +136,7 @@ public class User implements Serializable, Identified<Integer> {
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", nickname=" + nickname + '}';
+        return this.nickname;
     }
 
 }
