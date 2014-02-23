@@ -39,14 +39,14 @@
                 </ul>
             </div>
         </nav>
+        <div class="container">
+            <div id="breadcrumb" jsf:rendered="#{authMBean.auth}">
+                <ui:insert name="breadcrumb">breadcrumb</ui:insert>            
+            </div>
 
-        <div id="breadcrumb" jsf:rendered="#{authMBean.auth}">
-            <ui:insert name="breadcrumb">breadcrumb</ui:insert>            
+            <div id="content" jsf:rendered="#{!authMBean.auth}">
+                <ui:insert name="content"></ui:insert>            
+            </div>
         </div>
-
-        <div id="content" jsf:rendered="#{!authMBean.auth}">
-            <ui:insert name="content"></ui:insert>            
-        </div>
-
     </h:body>
 </html>
