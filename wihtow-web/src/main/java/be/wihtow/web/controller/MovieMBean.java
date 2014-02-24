@@ -7,8 +7,6 @@ import com.omertron.themoviedbapi.TheMovieDbApi;
 import com.omertron.themoviedbapi.model.MovieDb;
 import com.omertron.themoviedbapi.results.TmdbResultsList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -59,7 +57,7 @@ public class MovieMBean {
         TheMovieDbApi tmdb;
         try {
             tmdb = new TheMovieDbApi("0dd72d5407afdc97062741d732e9a765");
-            movieList = tmdb.searchMovie(movie.getTitle(), 0, "fr", true, 0);
+            movieList = tmdb.searchMovie(movie.getTitle(), 0, null, true, 0);
         } catch (MovieDbException ex) {
             movieList = null;
         }

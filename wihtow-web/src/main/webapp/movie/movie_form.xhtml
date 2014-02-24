@@ -15,33 +15,13 @@
         <ui:define name="content">
             <fieldset>
                 <legend>#{bundle.edit} #{movieMBean.movie.title}</legend>
-                <h:form>
+                <h:form prependId="false">
 
                     <div class="form-group">
                         <h:outputLabel for="nom">#{bundle.title}</h:outputLabel>
                         <h:inputText id="nom" value="#{movieMBean.movie.title}" class="form-control" p:placeholder="Titre" maxlength="70">
-                            <f:ajax  event="blur" listener="#{movieMBean.searchTheMovieDb()}" render="tmdb"/>
+                            <f:ajax event="blur" listener="#{movieMBean.searchTheMovieDb()}" render=":tmdb"/>
                         </h:inputText>
-                        <h:dataTable id="tmdb" styleClass="table table-hover" value="#{movieMBean.movieList.results}" var="m">
-
-                            <h:column>
-                                <f:facet name="header">ID</f:facet>
-                                <h:outputLink value="http://www.themoviedb.org/movie/#{m.id}">
-                                    <h:outputText value="#{m.id}"/>
-                                </h:outputLink>                                
-                            </h:column>
-
-                            <h:column>
-                                <f:facet name="header">title</f:facet>
-                                <h:outputText value="#{m.title}"/>
-                            </h:column>
-                            
-                            <h:column>
-                                <f:facet name="header">title</f:facet>
-                                <h:outputText value="#{m.overview}"/>
-                            </h:column>
-
-                        </h:dataTable>
                     </div>
 
                     <div class="form-group">
@@ -53,6 +33,37 @@
                     <h:commandButton class="btn btn-default" value="#{bundle.save}" action="#{movieMBean.save}"/>
 
                 </h:form>
+
+                <h:dataTable id="tmdb" styleClass="table table-hover" value="#{movieMBean.movieList.results}" var="movie">
+
+                    <h:column>
+                        <f:facet name="header">#{bundle.id}</f:facet>
+                        <h:outputLink value="http://www.themoviedb.org/movie/#{movie.id}">
+                            <h:outputText value="#{movie.id}"/>
+                        </h:outputLink>                                
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">#{bundle.imdb}</f:facet>
+                        <h:outputText value="#{movie.imdbID}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">#{bundle.title}</f:facet>
+                        <h:outputText value="#{movie.title}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">#{bundle.overview}</f:facet>
+                        <h:outputText value="#{movie.overview}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">#{bundle.rating}</f:facet>
+                        <h:outputText value="#{movie.userRating}"/>
+                    </h:column>
+
+                </h:dataTable>
 
             </fieldset>              
         </ui:define>
