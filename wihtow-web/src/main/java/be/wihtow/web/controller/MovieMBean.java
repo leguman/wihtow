@@ -2,7 +2,13 @@ package be.wihtow.web.controller;
 
 import be.wihtow.entities.movie.Movie;
 import be.wihtow.services.MovieBean;
+import com.omertron.themoviedbapi.MovieDbException;
+import com.omertron.themoviedbapi.TheMovieDbApi;
+import com.omertron.themoviedbapi.model.MovieDb;
+import com.omertron.themoviedbapi.results.TmdbResultsList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -23,6 +29,7 @@ public class MovieMBean {
     private Integer id;
     private Movie movie;
     private List<Movie> movies;
+    TmdbResultsList<MovieDb> movieList;
 
     @PostConstruct
     public void load() {
@@ -48,6 +55,16 @@ public class MovieMBean {
         return "movies";
     }
 
+    public void searchTheMovieDb() {
+        TheMovieDbApi tmdb;
+        try {
+            tmdb = new TheMovieDbApi("0dd72d5407afdc97062741d732e9a765");
+            movieList = tmdb.searchMovie(movie.getTitle(), 0, "fr", true, 0);
+        } catch (MovieDbException ex) {
+            movieList = null;
+        }
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -69,4 +86,13 @@ public class MovieMBean {
         }
         return movies;
     }
+
+    public TmdbResultsList<MovieDb> getMovieList() {
+        return movieList;
+    }
+
+    public void setMovieList(TmdbResultsList<MovieDb> movieList) {
+        this.movieList = movieList;
+    }
+
 }
