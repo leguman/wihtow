@@ -24,6 +24,11 @@
         <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.omertron</groupId>
+            <artifactId>themoviedbapi</artifactId>
         </dependency>            
         
         <dependency>

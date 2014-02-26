@@ -72,3 +72,10 @@ ALTER TABLE movie ADD CONSTRAINT chk_movie_delete CHECK (is_deleted IN (0,1));
 ALTER TABLE user ADD CONSTRAINT chk_user_delete CHECK (is_deleted IN (0,1));
 ALTER TABLE user ADD CONSTRAINT chk_user_active CHECK (is_active IN (0,1));
 ALTER TABLE genre CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
+-- changeset aMasset:7
+
+ALTER TABLE movie DROP COLUMN web_link;
+ALTER TABLE movie ADD COLUMN id_tmdb integer;
+ALTER TABLE movie ADD COLUMN id_imdb integer;

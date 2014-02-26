@@ -29,8 +29,10 @@ public class Movie implements Serializable, Identified<Integer> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String title;
-    @Column(name = "web_link")
-    private String webLink;
+    @Column(name = "id_tmdb")
+    private Integer idTmdb;
+    @Column(name = "id_imdb")
+    private Integer idImdb;
     @Column(name = "is_deleted")
     private Boolean isDeleted;
     @ManyToMany(fetch = FetchType.LAZY)
@@ -62,12 +64,20 @@ public class Movie implements Serializable, Identified<Integer> {
         this.title = title;
     }
 
-    public String getWebLink() {
-        return webLink;
+    public Integer getIdTmdb() {
+        return idTmdb;
     }
 
-    public void setWebLink(String webLink) {
-        this.webLink = webLink;
+    public void setIdTmdb(Integer idTmdb) {
+        this.idTmdb = idTmdb;
+    }
+
+    public Integer getIdImdb() {
+        return idImdb;
+    }
+
+    public void setIdImdb(Integer idImdb) {
+        this.idImdb = idImdb;
     }
 
     public Boolean getIsDeleted() {

@@ -2,9 +2,11 @@ package be.wihtow.web.controller;
 
 import be.wihtow.entities.movie.Movie;
 import be.wihtow.services.MovieBean;
+import be.wihtow.services.TheMovieDbBean;
 import com.omertron.themoviedbapi.MovieDbException;
 import com.omertron.themoviedbapi.TheMovieDbApi;
 import com.omertron.themoviedbapi.model.MovieDb;
+import com.omertron.themoviedbapi.model.TmdbConfiguration;
 import com.omertron.themoviedbapi.results.TmdbResultsList;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -21,13 +23,17 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 public class MovieMBean {
 
+    private static final String API_KEY = "0dd72d5407afdc97062741d732e9a765";
     @EJB
     private transient MovieBean movieBean;
+    @EJB
+    private transient TheMovieDbBean tmdbBean;
     @ManagedProperty(value = "#{param.id}")
     private Integer id;
     private Movie movie;
     private List<Movie> movies;
-    TmdbResultsList<MovieDb> movieList;
+    private TmdbResultsList<MovieDb> movieList;
+    private TmdbConfiguration tmdbConfiguration;
 
     @PostConstruct
     public void load() {
@@ -56,10 +62,10 @@ public class MovieMBean {
     public void searchTheMovieDb() {
         TheMovieDbApi tmdb;
         try {
-            tmdb = new TheMovieDbApi("0dd72d5407afdc97062741d732e9a765");
-            movieList = tmdb.searchMovie(movie.getTitle(), 0, null, true, 0);
+            tmdb = new TheMovieDbApi(API_KEY);
+            this.movieList = tmdb.searchMovie(movie.getTitle(), 0, "fr", true, 0);
         } catch (MovieDbException ex) {
-            movieList = null;
+            this.movieList = null;
         }
     }
 
@@ -93,4 +99,16 @@ public class MovieMBean {
         this.movieList = movieList;
     }
 
+    public String getTmdbBaseUrl() {
+        if (tmdbConfiguration == null) {
+            TheMovieDbApi tmdb;
+            try {
+                tmdb = new TheMovieDbApi(API_KEY);
+                this.tmdbConfiguration = tmdb.getConfiguration();
+            } catch (MovieDbException ex) {
+                return null;
+            }
+        }
+        return tmdbConfiguration.getBaseUrl();
+    }
 }

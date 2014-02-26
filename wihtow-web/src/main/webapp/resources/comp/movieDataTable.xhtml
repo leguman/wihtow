@@ -23,7 +23,7 @@
 
             <h:column>
                 <f:facet name="header">#{bundle.title}</f:facet>
-                <a href="#{movie.webLink}"><h:outputText value="#{movie.title}"/></a> 
+                <h:outputText value="#{movie.title}"/> 
             </h:column>
 
             <h:column rendered="#{cc.attrs.userGroup eq 'ADMINISTRATOR'}">
